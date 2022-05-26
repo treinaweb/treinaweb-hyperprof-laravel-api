@@ -50,14 +50,7 @@ class UsuarioController extends Controller
 
         $user = User::create($dados);
 
-        Auth::attempt(
-            [
-                'email' => $user->email,
-                'password' => $request->password
-            ]
-        );
-
-        $token = $request->user()->createToken('Primeiro Login')->plainTextToken;
+        $token = '';
 
         return compact('user', 'token');
     }

@@ -24,11 +24,7 @@ class UsuarioRequest extends FormRequest
      */
     public function rules()
     {
-        $userId = '';
-        
-        if ($this->isMethod('PUT')) {
-            $userId = Auth::user()->id;
-        }
+        $userId = Auth::guest() ? null : Auth::user()->id;
 
         return [
             'nome' => ['required','string','max:255'],

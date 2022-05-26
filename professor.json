@@ -1,0 +1,41 @@
+{
+    "fields": [
+        {
+            "name": "nome",
+            "type": "string"
+        },
+        {
+            "name": "idade",
+            "type": "number"
+        },
+        {
+            "name": "valor_aula",
+            "type": "number"
+        },
+        {
+            "name": "user_id",
+            "type": "integer#unsigned"
+        }
+    ],
+    "foreign_keys": [
+        {
+            "column": "user_id",
+            "references": "id",
+            "on": "users",
+            "onDelete": "cascade"
+        }
+    ],
+    "relationships": [
+        {
+            "name": "user",
+            "type": "belongsTo",
+            "class": "App\\Models\\User"
+        }
+    ],
+    "validations": [
+        {
+            "field": "title",
+            "rules": "required|max:10"
+        }
+    ]
+}

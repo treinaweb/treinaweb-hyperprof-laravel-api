@@ -24,7 +24,11 @@ class UsuarioRequest extends FormRequest
      */
     public function rules()
     {
-        $userId = Auth::guest() ? null : Auth::user()->id;
+        $emailValidation = ['required','string','email','max:255','unique:users,email'];
+
+        if (Auth::check()) {
+            $emailValidation[4] .= ',' . Auth::user()->id;
+        }
 
         return [
             'nome' => ['required','string','max:255'],
@@ -32,7 +36,7 @@ class UsuarioRequest extends FormRequest
             'valor_aula' => ['required','numeric'],
             'descricao' => ['required','string','max:500'],
 
-            'email' => ['required','string','email','max:255','unique:users,email,'. $userId],
+            'email' => $emailValidation,
             'password' => ['required','string','min:6','confirmed'],
         ];
     }

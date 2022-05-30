@@ -31,7 +31,10 @@ class AutenticacaoController extends Controller
 
         $token = $request->user()->createToken($request->dispositivo);
 
-        return ['token' => $token->plainTextToken];
+        return [
+            'user' => Auth::user(),
+            'token' => $token->plainTextToken
+        ];
     }
 
     /* 

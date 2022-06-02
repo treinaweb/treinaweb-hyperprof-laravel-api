@@ -91,6 +91,6 @@ class UsuarioController extends Controller
         $user = Auth::user();
         $user->delete();
         
-        return response(null, 204);
+        return response(null, 200);
     }
 }

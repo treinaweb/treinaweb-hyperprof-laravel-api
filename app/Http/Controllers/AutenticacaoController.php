@@ -24,9 +24,9 @@ class AutenticacaoController extends Controller
         $estaLogado = Auth::attempt($request->only('email', 'password'));
 
         if (!$estaLogado) {
-            return [
+            return response([
                 'message' => 'Usuário ou senha inválidos.',
-            ];
+            ], Response::HTTP_UNAUTHORIZED);
         }
 
         $token = $request->user()->createToken($request->dispositivo);

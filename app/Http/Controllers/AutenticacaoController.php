@@ -14,7 +14,7 @@ class AutenticacaoController extends Controller
      * @param Request $request
      * @return array
      */
-    public function login(Request $request): array
+    public function login(Request $request): array|Response
     {   
         $request->validate([
             'email' => 'required|email',

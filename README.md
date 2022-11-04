@@ -1,6 +1,5 @@
-## Projeto API da plataforma E-Diaristas
+## Projeto API da plataforma Hyperprof
 
-Desenvolvido no curso multi-stack da treinaweb
 
 ### Instalando o projeto
 
